@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <style>
-      :root { --bg:#fbfaf7; --surface:#fff; --ink:#101312; --muted:#5f6863; --line:#dfe6e1; --mint:#32c997; --mint-dark:#087a59; --coral:#f26f5e; --gold:#e6b94d; --shadow:0 24px 70px rgba(25,32,29,.12); }
+      :root { --bg:#fbfaf7; --surface:#fff; --ink:#101312; --muted:#5f6863; --line:#dfe6e1; --mint:#32c997; --mint-dark:#087a59; --coral:#f26f5e; --shadow:0 24px 70px rgba(25,32,29,.12); }
       * { box-sizing:border-box; }
       body { margin:0; background:var(--bg); color:var(--ink); font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
       a { color:inherit; text-decoration:none; }
@@ -27,7 +27,7 @@
       .availability,.eyebrow { display:inline-flex; align-items:center; gap:8px; color:var(--mint-dark); font-size:12px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
       .pulse { width:9px; height:9px; border-radius:999px; background:var(--mint); box-shadow:0 0 0 8px rgba(50,201,151,.14); }
       h1 { margin:16px 0 0; font-size:clamp(52px,8vw,104px); line-height:.93; letter-spacing:0; }
-      .hero-copy,.section-heading p,.card p,.signup p { color:var(--muted); line-height:1.62; }
+      .hero-copy,.section-heading p,.card p,.signup-panel p { color:var(--muted); line-height:1.62; }
       .hero-copy { max-width:660px; margin:24px 0 0; font-size:clamp(17px,2vw,21px); }
       .hero-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:32px; }
       .ios-note { margin-top:16px; color:var(--muted); font-size:14px; }
@@ -42,15 +42,15 @@
       .section { max-width:1180px; margin:clamp(64px,8vw,110px) auto 0; }
       .section-heading h2 { max-width:860px; margin:12px 0 0; font-size:clamp(34px,5vw,64px); line-height:1; }
       .grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; margin-top:42px; }
-      .card,.signup { border:1px solid var(--line); border-radius:14px; background:var(--surface); box-shadow:0 12px 34px rgba(26,34,30,.06); }
+      .card,.signup-panel { border:1px solid var(--line); border-radius:14px; background:var(--surface); box-shadow:0 12px 34px rgba(26,34,30,.06); }
       .card { padding:24px; }
       .card h3 { margin:0 0 10px; font-size:22px; }
       .split { display:grid; grid-template-columns:minmax(0,.9fr) minmax(340px,.7fr); gap:42px; align-items:start; }
-      .signup { padding:24px; display:grid; gap:14px; }
-      .signup h2 { margin:0; font-size:32px; }
-      label { display:grid; gap:8px; font-size:13px; font-weight:800; }
-      input { width:100%; min-height:48px; padding:0 14px; border:1px solid var(--line); border-radius:8px; font:inherit; }
-      .form-button { border:0; cursor:pointer; }
+      .signup-panel { padding:28px; display:grid; gap:16px; }
+      .signup-panel h2 { margin:0; font-size:32px; }
+      .signup-list { display:grid; gap:10px; margin:0; padding:0; list-style:none; color:var(--muted); }
+      .signup-list li { padding:12px 14px; border-radius:10px; background:#f2fbf7; }
+      .notice { border-left:4px solid var(--mint); padding:12px 14px; border-radius:8px; background:#f2fbf7; font-size:14px; }
       .site-footer { display:flex; justify-content:space-between; gap:18px; padding:28px clamp(18px,5vw,72px); border-top:1px solid var(--line); background:var(--surface); color:var(--muted); }
       @media (max-width: 900px) { .nav { display:none; } .hero,.split { grid-template-columns:1fr; } .grid { grid-template-columns:1fr; } .hero-visual { min-height:480px; } }
     </style>
@@ -64,7 +64,7 @@
         <a href="#community">Community</a>
         <a href="#early-access">Early access</a>
       </nav>
-      <a class="header-cta" href="#early-access">Join iOS Beta</a>
+      <a class="header-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSdMhO4gaXOnwT_Z1YY1fYUGDfEmlZAGjFcwJJFDnQPQ0tXwJg/viewform?usp=publish-editor" target="_blank" rel="noopener">Join iOS Beta</a>
     </header>
 
     <main id="top" class="page">
@@ -74,12 +74,12 @@
           <h1>Language meets real life.</h1>
           <p class="hero-copy">Echo helps you meet nearby people, practice languages in person, and join low-pressure local events when you are ready to talk.</p>
           <div class="hero-actions">
-            <a class="primary-button" href="#early-access">Request Early Access</a>
+            <a class="primary-button" href="https://docs.google.com/forms/d/e/1FAIpQLSdMhO4gaXOnwT_Z1YY1fYUGDfEmlZAGjFcwJJFDnQPQ0tXwJg/viewform?usp=publish-editor" target="_blank" rel="noopener">Request Early Access</a>
             <a class="secondary-button" href="#how">See How Echo Works</a>
           </div>
           <p class="ios-note">Currently for Apple iPhone users only. Android coming soon.</p>
           <div class="trust-row" aria-label="Early access trust signals">
-            <span>100+ testers joining soon</span><span>Local meetups</span><span>Built-in translation</span>
+            <span>100+ testers joining soon</span><span>Local meetups</span><span>Private signup form</span>
           </div>
         </div>
         <figure class="hero-visual" aria-label="Echo app preview">
@@ -118,14 +118,17 @@
 
       <section id="early-access" class="section split">
         <div class="section-heading"><span class="eyebrow">iOS beta</span><h2>Request an invite for the Apple-only early access release.</h2><p>Echo is starting with iPhone users so the first release can stay focused, polished, and easy to test.</p></div>
-        <form class="signup" onsubmit="event.preventDefault(); this.querySelector('p').textContent='Request received. Your early access details are saved in this browser.'; this.reset();">
+        <div class="signup-panel">
           <h2>Join the beta list</h2>
-          <label>Name<input required name="name" autocomplete="name" /></label>
-          <label>Email<input required type="email" name="email" autocomplete="email" /></label>
-          <label>City<input required name="city" autocomplete="address-level2" /></label>
-          <button class="primary-button form-button" type="submit">Request Early Access</button>
-          <p></p>
-        </form>
+          <p class="notice">Your signup opens in Google Forms. Responses are stored privately in the Google Sheet connected to that form, not on this website.</p>
+          <ul class="signup-list">
+            <li>Name</li>
+            <li>Email</li>
+            <li>City</li>
+            <li>iPhone beta interest</li>
+          </ul>
+          <a class="primary-button" href="https://docs.google.com/forms/d/e/1FAIpQLSdMhO4gaXOnwT_Z1YY1fYUGDfEmlZAGjFcwJJFDnQPQ0tXwJg/viewform?usp=publish-editor" target="_blank" rel="noopener">Open Secure Signup Form</a>
+        </div>
       </section>
     </main>
 
