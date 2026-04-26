@@ -1,0 +1,1 @@
+GitHub Pages publishing branch prepared. If the site still shows 404, set Settings > Pages > Source to Deploy from a branch, Branch gh-pages, Folder / (root).
