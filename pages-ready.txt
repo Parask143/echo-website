@@ -1,1 +1,1 @@
-GitHub Pages rebuild trigger for gh-pages root.
+GitHub Pages rebuild trigger for Google Form signup update.
