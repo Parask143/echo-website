@@ -1,33 +1,83 @@
 import { useEffect, useRef } from 'react';
 
-const ALL_IMAGES = [
-  'https://motionsites.ai/assets/hero-space-voyage-preview-eECLH3Yc.gif',
-  'https://motionsites.ai/assets/hero-codenest-preview-Cgppc2qV.gif',
-  'https://motionsites.ai/assets/hero-vex-ventures-preview-BczMFIiw.gif',
-  'https://motionsites.ai/assets/hero-stellar-ai-v2-preview-DjvxjG3C.gif',
-  'https://motionsites.ai/assets/hero-asme-preview-B_nGDnTP.gif',
-  'https://motionsites.ai/assets/hero-transform-data-preview-Cx5OU29N.gif',
-  'https://motionsites.ai/assets/hero-vitara-preview-Cjz2QYyU.gif',
-  'https://motionsites.ai/assets/hero-terra-preview-BFjrCr7T.gif',
-  'https://motionsites.ai/assets/hero-skyelite-preview-DHaZIgUv.gif',
-  'https://motionsites.ai/assets/hero-aethera-preview-DknSlcTa.gif',
-  'https://motionsites.ai/assets/hero-designpro-preview-D8c5_een.gif',
-  'https://motionsites.ai/assets/hero-stellar-ai-preview-D3HL6bw1.gif',
-  'https://motionsites.ai/assets/hero-xportfolio-preview-D4A8maiC.gif',
-  'https://motionsites.ai/assets/hero-orbit-web3-preview-BXt4OttD.gif',
-  'https://motionsites.ai/assets/hero-nexora-preview-cx5HmUgo.gif',
-  'https://motionsites.ai/assets/hero-evr-ventures-preview-DZxeVFEX.gif',
-  'https://motionsites.ai/assets/hero-planet-orbit-preview-DWAP8Z1P.gif',
-  'https://motionsites.ai/assets/hero-new-era-preview-CocuDUm9.gif',
-  'https://motionsites.ai/assets/hero-wealth-preview-B70idl_u.gif',
-  'https://motionsites.ai/assets/hero-luminex-preview-CxOP7ce6.gif',
-  'https://motionsites.ai/assets/hero-celestia-preview-0yO3jXO8.gif',
+interface LangCard {
+  flag: string;
+  name: string;
+  label: string;
+  speakers: string;
+}
+
+const ROW1: LangCard[] = [
+  { flag: '🇬🇧', name: 'English',    label: 'English',    speakers: '1.5B speakers' },
+  { flag: '🇪🇸', name: 'Español',    label: 'Spanish',    speakers: '500M speakers' },
+  { flag: '🇨🇳', name: '中文',       label: 'Chinese',    speakers: '1.1B speakers' },
+  { flag: '🇸🇦', name: 'العربية',   label: 'Arabic',     speakers: '370M speakers' },
+  { flag: '🇫🇷', name: 'Français',   label: 'French',     speakers: '300M speakers' },
+  { flag: '🇯🇵', name: '日本語',     label: 'Japanese',   speakers: '130M speakers' },
+  { flag: '🇵🇹', name: 'Português',  label: 'Portuguese', speakers: '260M speakers' },
+  { flag: '🇮🇳', name: 'हिन्दी',   label: 'Hindi',      speakers: '600M speakers' },
+  { flag: '🇰🇷', name: '한국어',     label: 'Korean',     speakers: '80M speakers'  },
+  { flag: '🇩🇪', name: 'Deutsch',    label: 'German',     speakers: '130M speakers' },
+  { flag: '🇮🇹', name: 'Italiano',   label: 'Italian',    speakers: '65M speakers'  },
 ];
 
-const ROW1 = ALL_IMAGES.slice(0, 11);
-const ROW2 = ALL_IMAGES.slice(11);
+const ROW2: LangCard[] = [
+  { flag: '🇷🇺', name: 'Русский',    label: 'Russian',    speakers: '260M speakers' },
+  { flag: '🇹🇷', name: 'Türkçe',     label: 'Turkish',    speakers: '80M speakers'  },
+  { flag: '🇳🇱', name: 'Nederlands', label: 'Dutch',      speakers: '30M speakers'  },
+  { flag: '🇹🇭', name: 'ภาษาไทย',   label: 'Thai',       speakers: '60M speakers'  },
+  { flag: '🇻🇳', name: 'Tiếng Việt', label: 'Vietnamese', speakers: '95M speakers'  },
+  { flag: '🇮🇩', name: 'Bahasa',     label: 'Indonesian', speakers: '200M speakers' },
+  { flag: '🇵🇱', name: 'Polski',     label: 'Polish',     speakers: '45M speakers'  },
+  { flag: '🇸🇪', name: 'Svenska',    label: 'Swedish',    speakers: '10M speakers'  },
+  { flag: '🇬🇷', name: 'Ελληνικά',  label: 'Greek',      speakers: '13M speakers'  },
+  { flag: '🇺🇦', name: 'Українська', label: 'Ukrainian',  speakers: '45M speakers'  },
+];
 
-const triple = (arr: string[]) => [...arr, ...arr, ...arr];
+const triple = <T,>(arr: T[]): T[] => [...arr, ...arr, ...arr];
+
+function LangCardItem({ card }: { card: LangCard }) {
+  return (
+    <div
+      style={{
+        width: 300,
+        height: 140,
+        flexShrink: 0,
+        borderRadius: 24,
+        background: 'linear-gradient(135deg, #0f2635 0%, #081a20 100%)',
+        border: '1px solid rgba(64, 196, 196, 0.18)',
+        padding: '18px 24px',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        gap: 8,
+      }}
+    >
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+        <span style={{ fontSize: 36 }}>{card.flag}</span>
+        <span
+          style={{
+            color: '#D7E2EA',
+            fontFamily: 'inherit',
+            fontWeight: 700,
+            fontSize: 22,
+            lineHeight: 1.1,
+          }}
+        >
+          {card.name}
+        </span>
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', paddingLeft: 4 }}>
+        <span style={{ color: 'rgba(215,226,234,0.5)', fontSize: 13, fontFamily: 'inherit', fontWeight: 400 }}>
+          {card.label}
+        </span>
+        <span style={{ color: 'rgba(64,196,196,0.7)', fontSize: 12, fontFamily: 'inherit', fontWeight: 300 }}>
+          {card.speakers}
+        </span>
+      </div>
+    </div>
+  );
+}
 
 export default function MarqueeSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -64,15 +114,8 @@ export default function MarqueeSection() {
         className="flex gap-3 mb-3"
         style={{ willChange: 'transform' }}
       >
-        {triple(ROW1).map((src, i) => (
-          <img
-            key={i}
-            src={src}
-            alt=""
-            loading="lazy"
-            className="rounded-2xl object-cover flex-shrink-0"
-            style={{ width: 420, height: 270 }}
-          />
+        {triple(ROW1).map((card, i) => (
+          <LangCardItem key={i} card={card} />
         ))}
       </div>
 
@@ -82,15 +125,8 @@ export default function MarqueeSection() {
         className="flex gap-3"
         style={{ willChange: 'transform' }}
       >
-        {triple(ROW2).map((src, i) => (
-          <img
-            key={i}
-            src={src}
-            alt=""
-            loading="lazy"
-            className="rounded-2xl object-cover flex-shrink-0"
-            style={{ width: 420, height: 270 }}
-          />
+        {triple(ROW2).map((card, i) => (
+          <LangCardItem key={i} card={card} />
         ))}
       </div>
     </section>
