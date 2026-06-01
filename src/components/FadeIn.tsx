@@ -1,4 +1,4 @@
-import { motion, Variants } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import React from 'react';
 
 interface FadeInProps {
@@ -8,7 +8,7 @@ interface FadeInProps {
   x?: number;
   y?: number;
   className?: string;
-  as?: keyof JSX.IntrinsicElements;
+  as?: keyof React.JSX.IntrinsicElements;
 }
 
 export default function FadeIn({
